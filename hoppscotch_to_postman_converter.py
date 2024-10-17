@@ -136,8 +136,11 @@ def convert_hoppscotch_env_to_postman_env(hoppscotch_json_env):
             "secret": variable["secret"]
         })
 
+    # Generate file name based on the environment name
+    postman_env_file_name = hoppscotch_json_env.replace('.json', '_postman_environment.json')
+
     # Save the Postman environment to a file with UTF-8 encoding
-    with open('postman_environment.json', 'w', encoding='utf-8') as postman_env_file:
+    with open(postman_env_file_name, 'w', encoding='utf-8') as postman_env_file:
         json.dump(postman_env, postman_env_file, indent=2, ensure_ascii=False)
 
     print("Environment conversion completed. Postman environment saved as postman_environment.json")
